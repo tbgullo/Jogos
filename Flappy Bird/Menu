@@ -1,1 +1,74 @@
 
+
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.Timer;
+import javax.swing.border.Border;
+import java.awt.Container.*;
+import java.awt.event.*;
+import java.util.*;
+//implements ActionListener
+class Menu extends JFrame implements ActionListener{
+    Cenario cenario;
+    Timer t;
+    JanelaInicial janela;
+    Reinia reinia;
+    JProgressBar pBar = new JProgressBar(JProgressBar.VERTICAL, 0 , 100);
+    int cont=0;
+    
+    Menu(){
+        super("Flappy Bird"); 
+        cenario = new Cenario();   
+        janela = new JanelaInicial(this);
+        janela.b1.addActionListener(new ActionListener() {
+          public void actionPerformed(ActionEvent ae) {
+            // janela.setVisible(false);
+             cenario.setVisible(true);
+             cenario.t.start();
+             cenario.requestFocus();
+             t.start();
+             setVisible(true);
+             add(pBar, BorderLayout.WEST);
+             add(cenario);
+             janela.setVisible(false);
+             preparaKeyListener();
+          }
+        });
+        
+       
+        setVisible(false);    
+        setSize(1000, 500);
+        setDefaultCloseOperation( WindowConstants.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+       t = new Timer(70*70, this);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+    pBar.setValue(cenario.cont);
+    System.out.println("cont eh " + cenario.cont);
+    }
+
+    void preparaKeyListener() {
+        
+        KeyAdapter l = new KeyAdapter() {
+          public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+              cenario.decY();
+            } 
+          }
+        };
+
+        addKeyListener(l);
+        addKeyListenerNosFilhos(l);
+    }
+
+      void addKeyListenerNosFilhos(KeyAdapter l) {
+        for (Component c: getContentPane().getComponents()) {
+          c.addKeyListener(l);
+        }
+      }
+
+      public static void main (String a[]){
+        new Menu();
+    }  
+}
