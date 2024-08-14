@@ -1,0 +1,14 @@
+Este programa foi desenvolvido como parte de uma atividade da disciplina de Inteligência Artificial, onde o objetivo era criar um protótipo de um agente simples em um ambiente pré-determinado. 
+O cenário escolhido foi um labirinto, e o desafio do agente, representado por um robô, era encontrar a saída.
+
+Parametros do Problema:
+    Medida de Desempenho: Achar a saida
+    Ambiente: Labirinto
+    Atuadores: Movimento do robo para alguma direção e sentido
+    Sensores: Presença de barreiras(XXXXX)
+
+O robô foi programado para seguir uma estratégia simples: priorizar sempre o movimento para a direita, com a suposição de que a saída está localizada neste lado do labirinto. 
+Este algoritmo básico funciona bem para cenários onde a saída está realmente à direita, mas não leva em conta outras possíveis rotas ou obstáculos complexos.
+
+A introdução de técnicas de Inteligência Artificial permitirá que o robô desenvolva estratégias mais avançadas e eficazes,
+adaptando-se melhor a diferentes configurações de labirinto e encontrando a saída de forma mais eficiente.
